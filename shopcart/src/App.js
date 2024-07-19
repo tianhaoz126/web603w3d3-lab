@@ -1,3 +1,4 @@
+// src/App.js
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container } from 'reactstrap';
@@ -8,6 +9,7 @@ import Navbar from './navbar';
 import Home from './Home';
 import Cart from './Cart';
 import ProductModal from './ProductModal';
+import CheckOut from './CheckOut';
 import products from './products';
 
 class App extends Component {
@@ -17,7 +19,8 @@ class App extends Component {
       products: products,
       totalItems: 0,
       modalOpen: false,
-      selectedProduct: null
+      selectedProduct: null,
+      isAuthenticated: false, // Track authentication state
     };
   }
 
@@ -54,6 +57,10 @@ class App extends Component {
     this.setState({ modalOpen: !this.state.modalOpen });
   };
 
+  handleLogin = () => {
+    this.setState({ isAuthenticated: true });
+  };
+
   render() {
     return (
       <Router>
@@ -69,6 +76,7 @@ class App extends Component {
               />
             } />
             <Route path="/cart" element={<Cart products={this.state.products} />} />
+            <Route path="/checkout" element={<CheckOut isAuthenticated={this.state.isAuthenticated} handleLogin={this.handleLogin} />} />
           </Routes>
           <ProductModal 
             product={this.state.selectedProduct}

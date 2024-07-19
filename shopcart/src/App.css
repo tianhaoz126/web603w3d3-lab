@@ -72,3 +72,12 @@ p {
   border-bottom: 1px solid #dee2e6;
   padding: 10px 0;
 }
+/* Add any additional styling for the CheckOut component here */
+.CheckOut {
+  margin-top: 20px;
+}
+
+.CheckOut button {
+  margin-top: 10px;
+}
+

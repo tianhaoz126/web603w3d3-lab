@@ -1,5 +1,7 @@
+// src/Cart.js
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const Cart = ({ products }) => {
   const cartItems = products.filter(product => product.quantity > 0);
@@ -28,6 +30,9 @@ const Cart = ({ products }) => {
               </Col>
             </Row>
           ))}
+          <Link to="/checkout">
+            <Button color="primary" className="CheckOutButton">Check Out</Button>
+          </Link>
         </div>
       )}
     </div>
